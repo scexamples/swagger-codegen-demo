@@ -67,9 +67,8 @@ The generated client also includes a pom.xml and a README.md
 
 ![img9gradle](https://user-images.githubusercontent.com/15854708/210188249-4528c645-5024-47e8-9af0-ab35ae0bd900.JPG)
 
-### Steps to use the generated client code:  
-(i) Update the 'basepath' in the generated 'ApiClient.java' -  
-'ApiClient.java' includes the URL for establishing a HTTP client connection as the 'basePath'. The 'basepath' value in the generated code was 'https://localhost:8080'. This was updated to 'http://localhost:8080'  
+### Verifying 'basepath' in the generated code and creating JAR files:  
+(i) The generated 'ApiClient.java' includes the URL for establishing a HTTP client connection as the 'basePath'. The 'basepath' value in the generated code was 'https://localhost:8080'. This was updated to 'http://localhost:8080'  
 (ii) Per instructions in the README.md, add the 'swagger-java-client' dependency to the pom.xml  
 (iii) Run mvn clean install  
 
