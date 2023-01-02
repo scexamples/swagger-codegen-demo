@@ -6,7 +6,7 @@ This example demonstrates the use of:
 
 - It uses a simple REST API project developed using Spring Boot, Maven, Spring Data JPA, and an embedded H2 database.  
 - The project has one JPA entity 'Student', a 'StudentRepository', and one REST controller 'StudentController'.  
-- On application startup, data.sql seeds the Student table with data.  
+- On application startup, 'data.sql' is used to seed the 'Student' table.  
 - 'springfox-boot-starter' and 'springfox-swagger-ui' dependencies for Swagger are declared in the pom.xml file.  
 
 # 1. Swagger for documentation and 2. Swagger UI for visualizing and testing
