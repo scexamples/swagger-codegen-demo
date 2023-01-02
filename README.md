@@ -2,12 +2,12 @@ This example demonstrates the use of:
 (1) Swagger for documentation of REST APIs  
 (2) Swagger UI to visualize and interact with the API's resources  
 (3) Swagger Codegen to generate a REST Client  
-(4) Using the generated REST Client  
+(4) Generated REST Client to interact with the APIs  
 
-It uses a simple REST API project developed using Spring Boot, Maven, Spring Data JPA, and an embedded H2 database.  
-The project has one JPA entity 'Student', a 'StudentRepository', and one REST controller 'StudentController'.  
-On application startup, data.sql seeds the Student table with data.  
-'springfox-boot-starter' and 'springfox-swagger-ui' dependencies for Swagger are declared in the pom.xml file.  
+- It uses a simple REST API project developed using Spring Boot, Maven, Spring Data JPA, and an embedded H2 database.  
+- The project has one JPA entity 'Student', a 'StudentRepository', and one REST controller 'StudentController'.  
+- On application startup, data.sql seeds the Student table with data.  
+- 'springfox-boot-starter' and 'springfox-swagger-ui' dependencies for Swagger are declared in the pom.xml file.  
 
 # 1. Swagger for documentation and 2. Swagger UI for visualizing and testing
 
@@ -31,13 +31,13 @@ On application startup, the following Swagger endpoints can be accessed:
 
 #### The request executes with a Server response code 200 (OK) and the response body displays all students currently in the db.
 
-### Click on the 'POST' button and then the 'Model' tab.  
+### Click on 'POST' and then the 'Model' tab.  
 
 ![img4add](https://user-images.githubusercontent.com/15854708/210188241-31c24cb8-9172-4e65-b811-1ff5d614b60c.JPG)
 
 #### Details of the 'Student' model including required attributes (based on annotations) are displayed.
 
-### Click the 'POST' button and then on the 'Edit' tab.
+### Click on 'POST' and then on the 'Edit' tab.
 
 ![img5](https://user-images.githubusercontent.com/15854708/210188242-fcd5b15e-6c84-49ce-924b-aecb1ed25933.JPG)
 
@@ -59,7 +59,7 @@ On application startup, the following Swagger endpoints can be accessed:
 
 ### Steps for client code generation:   
 (i) Save the swagger.json file (generated from http://localhost:8080/v2/api-docs) in src/main/resources    
-(ii) Add the swagger-codegen-maven-plugin to pom.xml  
+(ii) Add the 'swagger-codegen-maven-plugin' to pom.xml  
 (iii) Run mvn clean generate-sources  
 
 Once the code generation is complete, the plugin generates a client 'gradle' project in a new folder 'target/generated-sources'.  
@@ -68,8 +68,8 @@ The generated client also includes a pom.xml and a README.md
 ![img9gradle](https://user-images.githubusercontent.com/15854708/210188249-4528c645-5024-47e8-9af0-ab35ae0bd900.JPG)
 
 ### Steps to use the generated client code:  
-(i) Update the 'basepath' in the generated ApiClient.java: 
-ApiClient.java includes the URL for establishing a HTTP client connection as the 'basePath'. The 'basepath' value in the generated code was 'https://localhost:8080'. This was updated to 'http://localhost:8080'  
+(i) Update the 'basepath' in the generated 'ApiClient.java' -  
+'ApiClient.java' includes the URL for establishing a HTTP client connection as the 'basePath'. The 'basepath' value in the generated code was 'https://localhost:8080'. This was updated to 'http://localhost:8080'  
 (ii) Per instructions in the README.md, add the 'swagger-java-client' dependency to the pom.xml  
 (iii) Run mvn clean install  
 
@@ -94,7 +94,7 @@ To use the generated REST Client in any project, include the generated JAR as a 
 The generated code includes 'StudentControllerApi.java' which includes methods corresponding to all endpoints exposed in the original project (that was the source of swagger.json).  
 (ii) Create a new class 'GeneratedApi.java' with a 'main' method.  
 (iii) Create a new Student (example, name: Sam and zip code: 98005).  
-(iv) Create an instance of StudentControllerApi and call its createStudentUsingPOST() method and pass the student (created in the previous step) as the argument.
+(iv) Create an instance of 'StudentControllerApi' and call its 'createStudentUsingPOST()' method and pass the student (created in the previous step) as the argument.
 
 ![img10GeneratedApi](https://user-images.githubusercontent.com/15854708/210188254-c7d10c91-b35a-4dc9-bfaa-e8fcca1de375.JPG)  
 
