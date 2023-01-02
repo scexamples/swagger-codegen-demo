@@ -69,8 +69,7 @@ The generated client also includes a pom.xml and a README.md
 
 #### Verifying 'basepath' in the generated code and creating JAR files:  
 (i) The generated 'ApiClient.java' includes the URL for establishing a HTTP client connection as the 'basePath'. The 'basepath' value in the generated code was 'https://localhost:8080'. This was updated to 'http://localhost:8080'  
-(ii) Per instructions in the README.md, add the 'swagger-java-client' dependency to the pom.xml  
-(iii) Run mvn clean install  
+(ii) Run mvn clean install  
 
 ##### Note the messages in the terminal:
 
@@ -86,8 +85,9 @@ C:\Users\demos\.m2\repository\io\swagger\swagger-java-client\1.0.0\swagger-java-
 [INFO] ------------------------------------------------------------------------  
 
 # 4. Using the generated REST Client  
-To use the generated REST Client in any project, include the generated JAR as a dependency.
-     
+To use the generated REST Client in any project, include the generated JAR as a dependency  
+Per instructions in the README.md, add the 'swagger-java-client' dependency to the pom.xml  
+
 #### Steps for using the generated REST Client from within the current project:
 (i) Configure the build-path to include the 'generated-sources' folder as a source folder.  
 The generated code includes 'StudentControllerApi.java' which includes methods corresponding to all endpoints exposed in the original project (that was the source of swagger.json).  
