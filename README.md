@@ -1,5 +1,9 @@
 
-This example demonstrates the use of Swagger for documentation of REST API, Swagger UI to visualize and interact with the API's resources, and Swagger Codegen to generate a REST Client.  
+This example demonstrates the use of:  
+(i) Swagger for documentation of REST APIs
+(ii) Swagger UI to visualize and interact with the API's resources
+(iii) Swagger Codegen to generate a REST Client
+(iv) Use of the generated Client code
 
 It uses a simple REST API project developed using Spring Boot, Maven, Spring Data JPA, and an embedded H2 database.  
 The project has one JPA entity 'Student', a 'StudentRepository', and one REST controller 'StudentController'.  
