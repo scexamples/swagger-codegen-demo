@@ -1,15 +1,15 @@
 This example demonstrates the use of:  
-(i) Swagger for documentation of REST APIs  
-(ii) Swagger UI to visualize and interact with the API's resources  
-(iii) Swagger Codegen to generate a REST Client  
-(iv) Use of the generated Client code  
+(1) Swagger for documentation of REST APIs  
+(2) Swagger UI to visualize and interact with the API's resources  
+(3) Swagger Codegen to generate a REST Client  
+(4) Using the generated REST Client  
 
 It uses a simple REST API project developed using Spring Boot, Maven, Spring Data JPA, and an embedded H2 database.  
 The project has one JPA entity 'Student', a 'StudentRepository', and one REST controller 'StudentController'.  
 On application startup, data.sql seeds the Student table with data.  
 'springfox-boot-starter' and 'springfox-swagger-ui' dependencies for Swagger are declared in the pom.xml file.  
 
-# Swagger Endpoints
+# 1. Swagger for documentation and 2. Swagger UI for visualizing and testing
 
 On application startup, the following Swagger endpoints can be accessed:
   
@@ -19,61 +19,61 @@ On application startup, the following Swagger endpoints can be accessed:
 
 ### Swagger UI displays a list of all Controllers  
 
-![img1](https://user-images.githubusercontent.com/15854708/210187247-c0f0a3db-0f93-4957-abba-b47d14efb43d.JPG)
+![img1](https://user-images.githubusercontent.com/15854708/210188228-1186965f-9b5b-480e-9918-fdf8463e6dbe.jpg)
 
 ### Expanding the 'StudentController' link displays a list of all available Request methods.
 
-![img2](https://user-images.githubusercontent.com/15854708/210187250-6109298f-3b0c-46f0-af7a-50f413770d40.JPG)  
+![img2](https://user-images.githubusercontent.com/15854708/210188232-1a87caf6-89d5-4153-9a89-62a3c75dcbaf.JPG)
+  
+### Execute the 'GET' request to fetch all students. 
 
-### Click on a button to see details and test the Request method.  
-## Execute the 'GET' request to fetch all students. 
+![img3getAll](https://user-images.githubusercontent.com/15854708/210188237-c48ee2d2-c4ee-47f7-bc3e-47faf76dc9f9.JPG)
 
-![img3getAll]
+#### The request executes with a Server response code 200 (OK) and the response body displays all students currently in the db.
 
-### The request executes with a Server response code 200 (OK) and the response body displays all students currently in the db.
+### Click on the 'POST' button and then the 'Model' tab.  
 
-## Click on the 'POST' button and then the 'Model' tab.  
+![img4add](https://user-images.githubusercontent.com/15854708/210188241-31c24cb8-9172-4e65-b811-1ff5d614b60c.JPG)
 
-![img4add](https://user-images.githubusercontent.com/15854708/210187254-71008d66-5dab-455a-be63-0c1174270556.JPG)
+#### Details of the 'Student' model including required attributes (based on annotations) are displayed.
 
-### Details of the 'Student' model including required attributes (based on annotations) are displayed.
+### Click the 'POST' button and then on the 'Edit' tab.
 
-## Click the 'POST' button and then on the 'Edit' tab.
+![img5](https://user-images.githubusercontent.com/15854708/210188242-fcd5b15e-6c84-49ce-924b-aecb1ed25933.JPG)
 
-![img5](https://user-images.githubusercontent.com/15854708/210187255-7fe9e05b-6918-4fdd-a655-0f1904ceec2f.JPG)
+### Edit the example values and 'POST' the new Student (id: 3) by clicking 'Execute'
 
-## Edit the example values and 'POST' the new Student (id: 3) by clicking 'Execute'
+![img6afterexecpost](https://user-images.githubusercontent.com/15854708/210188244-3b73f70b-5965-4127-8573-4aabae9e9996.JPG)
 
-![img6afterexecpost](https://user-images.githubusercontent.com/15854708/210187257-c9cc7ed8-3c78-4386-b79e-dc7da1cf3cc5.JPG)  
+#### Server returns a response code of 201 (Created) and a link to the new resource in the response header (http://localhost:8080/students/3)
 
-### Server returns a response code of 201 (Created) and a link to the newly created resource in the response header (http://localhost:8080/students/3)
+### Navigate to the link to verify that the new resource was created  successfully. 
 
-## Navigate to the link to verify that the new resource was created  successfully. 
+![img8newresource](https://user-images.githubusercontent.com/15854708/210188248-3a7b3276-43c6-40fc-a879-3ac3581f858c.JPG)
 
-![img8newresource](https://user-images.githubusercontent.com/15854708/210187262-ee26b31b-06fd-4c96-a717-44d86d4277f7.JPG)
+### Execute a 'GET' request to '/students' to further verify that the POST request executed successfully.  
 
-## Execute a 'GET' request to '/students' to further verify that the POST request executed successfully.  
+![img7getafterpost](https://user-images.githubusercontent.com/15854708/210188245-a1676ce2-01fc-43e1-8893-edca9b46946a.JPG)
 
-![img7getafterpost](https://user-images.githubusercontent.com/15854708/210187258-48a9e714-97e2-485b-9f7f-844f575fcca6.JPG)
+# 3. Swagger Codegen for generating the REST Client  
 
-
-## Steps for client code generation:   
-(i) Save the swagger.json file in src/main/resources (generated from http://localhost:8080/v2/api-docs)   
+### Steps for client code generation:   
+(i) Save the swagger.json file (generated from http://localhost:8080/v2/api-docs) in src/main/resources    
 (ii) Add the swagger-codegen-maven-plugin to pom.xml  
 (iii) Run mvn clean generate-sources  
 
 Once the code generation is complete, the plugin generates a client 'gradle' project in a new folder 'target/generated-sources'.  
 The generated client also includes a pom.xml and a README.md  
 
-![img9gradle](https://user-images.githubusercontent.com/15854708/210187265-b243f1b4-cd28-4526-a800-2c2e112afd03.JPG)
+![img9gradle](https://user-images.githubusercontent.com/15854708/210188249-4528c645-5024-47e8-9af0-ab35ae0bd900.JPG)
 
-## Steps to use the generated client code:  
+### Steps to use the generated client code:  
 (i) Update the 'basepath' in the generated ApiClient.java: 
 ApiClient.java includes the URL for establishing a HTTP client connection as the 'basePath'. The 'basepath' value in the generated code was 'https://localhost:8080'. This was updated to 'http://localhost:8080'  
 (ii) Per instructions in the README.md, add the 'swagger-java-client' dependency to the pom.xml  
 (iii) Run mvn clean install  
 
-# Note the messages in the terminal:
+#### Note the messages in the terminal:
 
 [INFO] Installing C:\Users\demos\eclipse-workspace\swagger-codegen-demo\target\generated-sources\target\swagger-java-client-1.0.0.jar to C:\Users\demos\.m2\repository\io\swagger\swagger-java-client\1.0.0\swagger-java-client-1.0.0.jar  
 [INFO] Installing C:\Users\demos\eclipse-workspace\swagger-codegen-demo\target\generated-sources\pom.xml to C:\Users\demos\.m2\repository\io\swagger\swagger-java-client\1.0.0\swagger-java-client-1.0.0.pom  
@@ -86,16 +86,16 @@ C:\Users\demos\.m2\repository\io\swagger\swagger-java-client\1.0.0\swagger-java-
 [INFO] Finished at: 2022-12-23T16:12:22-08:00  
 [INFO] ------------------------------------------------------------------------  
 
-# Using the generated REST Client  
-To use the generated REST Client in any project include the generated JAR as a dependency.
+# 4. Using the generated REST Client  
+To use the generated REST Client in any project, include the generated JAR as a dependency.
      
-### Steps for using the generated REST Client from within the current project
+### Steps for using the generated REST Client from within the current project:
 (i) Configure the build-path to include the 'generated-sources' folder as a source folder.  
 The generated code includes 'StudentControllerApi.java' which includes methods corresponding to all endpoints exposed in the original project (that was the source of swagger.json).  
 (ii) Create a new class 'GeneratedApi.java' with a 'main' method.  
 (iii) Create a new Student (example, name: Sam and zip code: 98005).  
 (iv) Create an instance of StudentControllerApi and call its createStudentUsingPOST() method and pass the student (created in the previous step) as the argument.
 
-![img10GeneratedApi](https://user-images.githubusercontent.com/15854708/210187267-d5408969-da79-4150-b525-3d610566a635.JPG)
+![img10GeneratedApi](https://user-images.githubusercontent.com/15854708/210188254-c7d10c91-b35a-4dc9-bfaa-e8fcca1de375.JPG)  
 
 #### Message in the terminal indicates that the resource was created successfully (response code 201).
